@@ -16,3 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('push', function () {
+    // $fields['include_player_ids'] = ['xxxxxxxx-xxxx-xxx-xxxx-yyyyyyyyy'];
+    $fields["included_segments"] = ["All"];
+    $message = 'Test message from API';
+
+    OneSignal::sendPush($fields, $message);
+
+    echo "Notification sent";
+});
